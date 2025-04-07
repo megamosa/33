@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="MagoArab\HideMassActions\Block\MassActions" 
+                   name="mass.actions.hider" 
+                   template="MagoArab_HideMassActions::hide_mass_actions.phtml"/>
+            <block class="MagoArab\HideMassActions\Block\MassActions" 
+                   name="mass.actions.permissions" 
+                   template="MagoArab_HideMassActions::massactions.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

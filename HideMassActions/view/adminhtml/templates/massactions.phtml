@@ -1,0 +1,67 @@
+<?php
+/** @var \MagoArab\HideMassActions\Block\MassActions $block */
+$actions = $block->getAvailableActions();
+?>
+<script>
+require(['jquery', 'mage/translate'], function ($) {
+    $(document).ready(function () {
+        // Prepare array of allowed action values
+        var aclPermissions = <?php echo json_encode(array_column($actions, 'value')); ?>;
+        var aclLabels = <?php echo json_encode(array_column($actions, 'label')); ?>;
+
+        // Function to normalize action names for comparison
+        function normalizeActionName(actionName) {
+            return actionName.toLowerCase().replace(/\s+/g, '_');
+        }
+
+        // Hide mass action dropdown options
+        $('#sales_order_grid_massaction-select option').each(function () {
+            var $option = $(this);
+            var action = $option.val();
+            var actionText = $option.text();
+
+            // Remove option if not in allowed permissions
+            var isAllowed = aclPermissions.some(function(permission) {
+                return normalizeActionName(action).includes(normalizeActionName(permission)) ||
+                       normalizeActionName(actionText).includes(normalizeActionName(permission));
+            });
+
+            if (!isAllowed) {
+                $option.remove();
+            }
+        });
+
+        // Hide mass action buttons in toolbar
+        $('.action-menu-item').each(function() {
+            var $actionItem = $(this);
+            var actionLabel = $actionItem.data('label') || $actionItem.text();
+            
+            // Check if the action is allowed
+            var isAllowed = aclLabels.some(function(label) {
+                return normalizeActionName(actionLabel).includes(normalizeActionName(label));
+            });
+
+            if (!isAllowed) {
+                $actionItem.hide();
+                $actionItem.parent('li').hide();
+            }
+        });
+
+        // If no actions are available, hide the entire mass action dropdown
+        if ($('#sales_order_grid_massaction-select option').length === 1) {
+            $('#sales_order_grid_massaction-select').hide();
+            $('.action-menu').hide();
+        }
+    });
+});
+</script>
+
+<?php if (empty($actions)): ?>
+<style>
+    .action-menu, 
+    #sales_order_grid_massaction-select, 
+    [data-action="massaction"] {
+        display: none !important;
+    }
+</style>
+<?php endif; ?>

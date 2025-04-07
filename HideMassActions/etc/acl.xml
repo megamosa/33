@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="MagoArab_HideMassActions::order_status_management" title="Order Status Management">
+                    <!-- Arabic Status Options -->
+                    <resource id="MagoArab_HideMassActions::status_prepared" title="Status: تم التجهيز" />
+                    <resource id="MagoArab_HideMassActions::status_reserved" title="Status: حجز" />
+                    <resource id="MagoArab_HideMassActions::status_pre_walk_reservation" title="Status: مسبق Walk حجز" />
+                    <resource id="MagoArab_HideMassActions::status_today_deliveries" title="Status: تسليمات اليوم" />
+                    <resource id="MagoArab_HideMassActions::status_shipped_today" title="Status: تم الشحن اليوم" />
+                    <resource id="MagoArab_HideMassActions::status_shipped" title="Status: تم الشحن" />
+                    <resource id="MagoArab_HideMassActions::status_be3ly_deliveries" title="Status: Be3ly تسليمات" />
+                    <resource id="MagoArab_HideMassActions::status_attempt_2" title="Status: محاولة 2" />
+                    <resource id="MagoArab_HideMassActions::status_mohamed_confirmations" title="Status: تاكيدات محمد" />
+                    <resource id="MagoArab_HideMassActions::status_nesreen_confirmations" title="Status: تاكيدات نسرين" />
+                    <resource id="MagoArab_HideMassActions::status_mariam_confirmations" title="Status: تاكيدات مريم" />
+                    <resource id="MagoArab_HideMassActions::status_client_delay" title="Status: تآجيل العميل" />
+                    <resource id="MagoArab_HideMassActions::status_pre_be3ly_reservation" title="Status: مسبق Be3ly حجز" />
+                    <resource id="MagoArab_HideMassActions::status_processing" title="Status: جاري التجهيز" />
+                    <resource id="MagoArab_HideMassActions::status_printing" title="Status: طباعه" />
+                    <resource id="MagoArab_HideMassActions::status_todays_returns" title="Status: مرتجعات اليوم" />
+
+                    <!-- English Status Options -->
+                    <resource id="MagoArab_HideMassActions::status_canceled" title="Status: Canceled" />
+                    <resource id="MagoArab_HideMassActions::status_closed" title="Status: Closed" />
+                    <resource id="MagoArab_HideMassActions::status_complete" title="Status: Complete" />
+                    <resource id="MagoArab_HideMassActions::status_suspected_fraud" title="Status: Suspected Fraud" />
+                    <resource id="MagoArab_HideMassActions::status_on_hold" title="Status: On Hold" />
+                    <resource id="MagoArab_HideMassActions::status_payment_review" title="Status: Payment Review" />
+                    <resource id="MagoArab_HideMassActions::status_pending" title="Status: Pending" />
+                    <resource id="MagoArab_HideMassActions::status_pending_payment" title="Status: Pending Payment" />
+
+                    <!-- Mass Actions -->
+                    <resource id="MagoArab_HideMassActions::mass_actions" title="Mass Actions">
+                        <resource id="MagoArab_HideMassActions::change_status" title="Change Order Status" />
+                        <resource id="MagoArab_HideMassActions::print_pdf_orders" title="Print PDF Orders" />
+                        <resource id="MagoArab_HideMassActions::print_invoices" title="Print Invoices" />
+                        <resource id="MagoArab_HideMassActions::print_packing_slips" title="Print Packing Slips" />
+                        <resource id="MagoArab_HideMassActions::print_credit_memos" title="Print Credit Memos" />
+                        <resource id="MagoArab_HideMassActions::print_all" title="Print All" />
+                        <resource id="MagoArab_HideMassActions::print_shipping_labels" title="Print Shipping Labels" />
+                        <resource id="MagoArab_HideMassActions::cancel" title="Cancel Orders" />
+                        <resource id="MagoArab_HideMassActions::hold" title="Hold Orders" />
+                        <resource id="MagoArab_HideMassActions::unhold" title="Unhold Orders" />
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,30 @@
+<?php
+/** @var \MagoArab\HideMassActions\Block\MassActions $block */
+$auth = $block->getAuthorization();
+?>
+
+<style>
+    /* Hide specific actions based on permissions */
+    <?php 
+    $actionsToCheck = [
+        'hold' => 'MagoArab_HideMassActions::hold',
+        'unhold' => 'MagoArab_HideMassActions::unhold',
+        'cancel' => 'MagoArab_HideMassActions::cancel',
+        'invoice' => 'MagoArab_HideMassActions::print_invoices',
+        'ship' => 'MagoArab_HideMassActions::print_shipping_labels',
+        'print' => 'MagoArab_HideMassActions::print_all'
+    ];
+
+    foreach ($actionsToCheck as $action => $permission):
+        if (!$auth->isAllowed($permission)): 
+    ?>
+        li[data-label="<?= ucfirst($action) ?>"], 
+        button[title="<?= ucfirst($action) ?>"], 
+        .action-menu-item[data-label="<?= ucfirst($action) ?>"] { 
+            display: none !important; 
+        }
+    <?php 
+        endif; 
+    endforeach; 
+    ?>
+</style>
